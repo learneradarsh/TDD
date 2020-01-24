@@ -6,4 +6,8 @@ describe("Test case for equality",function(){
         let isEqual = convertFeetIntoInch(0);
         assert.equal(isEqual,0);
     });
+    it("should return true if number is null",function(){
+        let isNull = convertFeetIntoInch();
+        assert.equal(isNull,true);
+    })
 });
