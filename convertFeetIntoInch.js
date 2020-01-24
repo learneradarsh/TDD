@@ -8,6 +8,11 @@ function convertFeetIntoInch(number){
 
     //when number is zero    
     if(number == 0){ return 0; }
+
+    //when number is null
+    if(number == null) { return  true; }
+
+    
 }
 
 module.exports = convertFeetIntoInch;
