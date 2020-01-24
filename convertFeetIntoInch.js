@@ -12,7 +12,10 @@ function convertFeetIntoInch(number){
     //when number is null
     if(number == null) { return  true; }
 
-    
+    //number type check
+    if(typeof(number) != "number") { return false; }
+
+
 }
 
 module.exports = convertFeetIntoInch;
