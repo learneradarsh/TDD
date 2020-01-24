@@ -10,4 +10,8 @@ describe("Test case for equality",function(){
         let isNull = convertFeetIntoInch();
         assert.equal(isNull,true);
     })
+    it("should return false if typeof number is not number",function(){
+        let isNum = convertFeetIntoInch("4");
+        assert.equal(isNum,false);
+    });
 });
