@@ -28,4 +28,8 @@ describe("Test case for inch", function() {
     }
     assert.equal(isNum, true);
   });
+  it("should return 24 if pass 2", function() {
+    let value = convertFeetIntoInch(2);
+    assert.equal(value, true);
+  });
 });
