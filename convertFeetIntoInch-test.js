@@ -22,14 +22,18 @@ describe("Test case for inch", function() {
     assert.equal(isNull, true);
   });
   it("should return true if converted value is number", function() {
-    let isNum = convertFeetIntoInch(2);
-    if (typeof isNum === "number") {
-      isNum = true;
-    }
-    assert.equal(isNum, true);
+    assert.isNumber(convertFeetIntoInch(2));
   });
   it("should return 24 if pass 2", function() {
     let value = convertFeetIntoInch(2);
-    assert.equal(value, true);
+    assert.equal(value, 24);
+  });
+  it("should not return 1 if 1ft is not eq to 1 inch", function() {
+    let value = convertFeetIntoInch(1);
+    assert.notEqual(value, 1);
+  });
+  it("should return 12inch", function() {
+    let value = convertFeetIntoInch(1);
+    assert.equal(value, 12);
   });
 });
