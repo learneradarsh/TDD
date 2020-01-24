@@ -25,4 +25,4 @@ function sum(a, b) {
 }
 
 //Export the function
-module.exports = sum();
+module.exports = sum;
