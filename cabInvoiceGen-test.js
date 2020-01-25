@@ -147,11 +147,11 @@ describe("test cases for getUserInvoice", function () {
     let isNull = cabInvoiceGen.getUserInvoice(1);
     assert.notEqual(isNull, null);
   });
-  it("should return totalFare 420, totalRides 2, avgFarePerRide 210", function () {
+  it("should return totalFare 550, totalRides 2, avgFarePerRide 275", function () {
     let invoice = cabInvoiceGen.getUserInvoice(1);
-    assert.equal(invoice.totalFare, 420);
+    assert.equal(invoice.totalFare, 550);
     assert.equal(invoice.totalRides, 2);
-    assert.equal(invoice.avgFarePerRide, 210);
+    assert.equal(invoice.avgFarePerRide, 275);
   });
 });
 
