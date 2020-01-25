@@ -19,7 +19,7 @@ class CabInvoiceGen {
           distance: 4,
           time: 4
         }, {
-          type: "normal",
+          type: "premium",
           distance: 2,
           time: 2
         }]
@@ -161,5 +161,6 @@ class CabInvoiceGen {
   }
 
 }
+
 
 module.exports = CabInvoiceGen;
