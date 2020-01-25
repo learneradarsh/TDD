@@ -43,8 +43,12 @@ describe("Test case for yard",function() {
     let value = measurement.convertFeetIntoYard(3);
     assert.equal(value,1);
   });
-  it("should return false if 1 ft != 1yd",function(){
+  it("should not equal if 1 ft != 1yd",function(){
     let value = measurement.convertFeetIntoYard(1);
+    assert.notEqual(value,1);
+  });
+  it("should not equal if 1 in != 1yd ",function(){
+    let value = measurement.convertInchIntoYard(1);
     assert.notEqual(value,1);
   });
 });
