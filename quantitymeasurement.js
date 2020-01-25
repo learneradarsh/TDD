@@ -78,7 +78,7 @@ function measurement() {
       return false;
     }
 
-    convertedValue = number * (0.027778);
+    convertedValue = number * (1/36);
     return convertedValue;
   }
   
