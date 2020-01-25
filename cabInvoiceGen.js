@@ -40,7 +40,7 @@ class CabInvoiceGen {
 
   /**
    * @method to calculate multiple ride fares
-   * @param  {} rides is an object having distance and time property
+   * @param  {} rides is an array of objects example - ride = [{distance:3,time:3}];
    */
   multipleRideFare(rides) {
     if (rides == null) {
