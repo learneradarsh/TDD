@@ -1,5 +1,5 @@
 const assert = require("chai").assert;
-const measurement = require("./convertFeetIntoInch");
+const measurement = require("./quantitymeasurement");
 
 describe("Test case for feet", function() {
   it("should return true for 0 feet and 0 feet", function() {
