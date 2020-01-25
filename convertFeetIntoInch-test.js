@@ -37,3 +37,10 @@ describe("Test case for inch", function() {
     assert.equal(value, 12);
   });
 });
+
+describe("Test case for yard",function() {
+  it("should return 1",function() {
+    let value = measurement.convertFeetIntoYard(3);
+    assert.equal(value,1);
+  });
+});
