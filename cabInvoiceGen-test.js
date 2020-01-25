@@ -94,3 +94,14 @@ describe("test cases for multipleRideFare", function() {
     assert.equal(agrFare, 10);
   });
 });
+
+describe("test cases for generateInvoice", function() {
+  it("should return true if generateInvoice has no arg", function() {
+    let isNull = cabInvoiceGen.multipleRideFare();
+    assert.equal(isNull, true);
+  });
+  it("should return true if generateInvoice has invalid type arg", function() {
+    let isValid = cabInvoiceGen.multipleRideFare("23");
+    assert.equal(isValid, true);
+  });
+});
