@@ -118,3 +118,32 @@ describe("test cases for generateInvoice", function () {
     assert.equal(invoice.avgFarePerRide, 1);
   });
 });
+
+describe("test cases for getUserInvoice", function () {
+  it("should return true if userid is null", function () {
+    let isExist = cabInvoiceGen.getUserInvoice();
+    assert.equal(isExist, true);
+  });
+  it("should return if argument is invalid", function () {
+    let isValid = cabInvoiceGen.getUserInvoice("a");
+    assert.equal(isValid, true);
+  });
+  it("should return false if user doesn't exist", function () {
+    let isExist = cabInvoiceGen.getUserInvoice(2);
+    assert.equal(isExist, false);
+  });
+  it("should not return false if user exists", function () {
+    let isExist = cabInvoiceGen.getUserInvoice(1);
+    assert.notEqual(isExist, false);
+  });
+  it("should not equal to null", function () {
+    let isNull = cabInvoiceGen.getUserInvoice(1);
+    assert.notEqual(isNull, null);
+  });
+  it("should return totalFare 420, totalRides 2, avgFarePerRide 210", function () {
+    let invoice = cabInvoiceGen.getUserInvoice(1);
+    assert.equal(invoice.totalFare, 420);
+    assert.equal(invoice.totalRides, 2);
+    assert.equal(invoice.avgFarePerRide, 210);
+  });
+});
