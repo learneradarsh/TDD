@@ -61,6 +61,31 @@ class CabInvoiceGen {
       return agrTotalFare;
     }
   }
+  
+  /**
+   * @method to generate invoice having details total number of rides, total fare, and avg fare per ride
+   * @param  {} rides is an array of objects example - ride = [{distance:3,time:3}]; 
+   */
+  generateInvoice(rides) {
+    if (rides == null) {
+      //check if function has no arguments
+      return true;
+    } else if (typeof rides !== "object") {
+      //check if function has valid number type arguments
+      return true;
+    } else {
+      let invoice = {
+        totalFare: 0,
+        totalRides: 0,
+        avgFarePerRide: 0
+      };
+      invoice.totalFare = this.multipleRideFare(rides);
+      invoice.totalRides = rides.length;
+      invoice.avgFarePerRide = invoice.totalFare / invoice.totalRides;
+
+      return invoice;
+    }
+  }
 }
 
 module.exports = CabInvoiceGen;
