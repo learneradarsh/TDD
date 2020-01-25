@@ -51,4 +51,8 @@ describe("Test case for yard",function() {
     let value = measurement.convertInchIntoYard(1);
     assert.notEqual(value,1);
   });
+  it("should equal if 1 yd = 36 in",function(){
+    let value = measurement.convertYardIntoInch(1);
+    assert.equal(value,36);
+  });
 });
