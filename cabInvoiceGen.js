@@ -4,17 +4,22 @@
  */
 class CabInvoiceGen {
   constructor() {
-    this.MINFARE = 5; //minimum fare in INR
-    this.FAREPERKIM = 10; //fare per kilometer in INR
-    this.FAREPERMIN = 1; //fare per minute in INR
-    //dummy user data
+    this.MINFARE = 5; //minimum fare in INR for normal cab
+    this.FAREPERKIM = 10; //fare per kilometer in INR for normal cab
+    this.FAREPERMIN = 1; //fare per minute in INR for normal cab
+    this.MINFARE_PREMIUM = 20; //minimum fare in INR for premium cab
+    this.FAREPERKIM_PREMIUM = 15; //fare per kilometer in INR for premium cab
+    this.FAREPERMIN_PREMIUM = 2; //fare per minute in INR for premium cab
+    //dummy database
     this.db = [
       {
         userId: 1,
         rides: [{
+          type: "normal",
           distance: 4,
           time: 4
         }, {
+          type: "normal",
           distance: 2,
           time: 2
         }]
@@ -50,6 +55,35 @@ class CabInvoiceGen {
       return totalFare;
     }
   }
+  
+  /**
+   * @method to calculate fare for premium cab journey
+   * @param  {} distance
+   * @param  {} time
+   */
+  calcPremiumCabFare(distance,time){
+    let totalFare = 0; //total fare for a ride in INR
+    let totalTimeInMin = 0; // total time in minutes
+    if (distance == null || time == null) {
+      //check if function has no arguments
+      return true;
+    } else if (typeof distance === undefined || typeof time === undefined) {
+      //check if function has partial arguments
+      return true;
+    } else if (typeof distance !== "number" || typeof distance !== "number") {
+      //check if function has valid number type arguments
+      return true;
+    } else {
+      totalTimeInMin = time * 60;
+
+      if (distance === 0 || time === 0) {
+        return this.MINFARE_PREMIUM;
+      }
+
+      totalFare = this.FAREPERKIM_PREMIUM * distance + totalTimeInMin * this.FAREPERMIN_PREMIUM;
+      return totalFare;
+    }
+  }
 
   /**
    * @method to calculate multiple ride fares
@@ -68,8 +102,13 @@ class CabInvoiceGen {
         return agrTotalFare;
       }
       for (let i = 0; i < rides.length; i++) {
-        agrTotalFare =
+        if(rides[i].type == "normal"){
+          agrTotalFare =
           agrTotalFare + this.calcCabFare(rides[i].distance, rides[i].time);
+        }else{
+          agrTotalFare =
+          agrTotalFare + this.calcPremiumCabFare(rides[i].distance, rides[i].time);
+        }
       }
       return agrTotalFare;
     }
@@ -122,8 +161,5 @@ class CabInvoiceGen {
   }
 
 }
-
-const c = new CabInvoiceGen();
-console.log(c.getUserInvoice(1));
 
 module.exports = CabInvoiceGen;
