@@ -58,6 +58,7 @@ describe("test cases for multipleRideFare", function () {
   it("should not equal to null if agrTotalFare is not null", function () {
     let rides = [
       {
+        type: "normal",
         distance: 4,
         time: 4
       }
@@ -68,10 +69,12 @@ describe("test cases for multipleRideFare", function () {
   it("should return 630 if calculated correct output", function () {
     let rides = [
       {
+        type: "normal",
         distance: 4,
         time: 4
       },
       {
+        type: "normal",
         distance: 5,
         time: 5
       }
@@ -82,10 +85,12 @@ describe("test cases for multipleRideFare", function () {
   it("should return 10 if minimum fare condition is working for 2 rides where total distance and time is zero", function () {
     let rides = [
       {
+        type: "normal",
         distance: 0,
         time: 0
       },
       {
+        type: "normal",
         distance: 0,
         time: 0
       }
@@ -106,9 +111,11 @@ describe("test cases for generateInvoice", function () {
   });
   it("should return totalRides 2, totalFare 2, and avgFarePerRide 1", function () {
     let rides = [{
+      type: "normal",
       percentage: 4,
       time: 4
     }, {
+      type: "normal",
       percentage: 5,
       time: 5
     }];
@@ -145,5 +152,20 @@ describe("test cases for getUserInvoice", function () {
     assert.equal(invoice.totalFare, 420);
     assert.equal(invoice.totalRides, 2);
     assert.equal(invoice.avgFarePerRide, 210);
+  });
+});
+
+describe("test cases for calcPremiumCabFare",function(){
+  it("should return 20 if distance is zero", function () {
+    let fare = cabInvoiceGen.calcPremiumCabFare(0, 0);
+    assert.equal(fare, 20);
+  });
+  it("should return value if calcPremiumCabFare output is not null", function () {
+    let isNull = cabInvoiceGen.calcPremiumCabFare(5, 5);
+    assert.notEqual(isNull, null);
+  });
+  it("should return 675 if distance - 5 and time - 5",function(){
+    let premiumFare = cabInvoiceGen.calcPremiumCabFare(5,5);
+    assert.equal(premiumFare,675);
   });
 });
