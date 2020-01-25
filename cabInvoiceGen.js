@@ -7,6 +7,19 @@ class CabInvoiceGen {
     this.MINFARE = 5; //minimum fare in INR
     this.FAREPERKIM = 10; //fare per kilometer in INR
     this.FAREPERMIN = 1; //fare per minute in INR
+    //dummy user data
+    this.db = [
+      {
+        userId: 1,
+        rides: [{
+          distance: 4,
+          time: 4
+        }, {
+          distance: 2,
+          time: 2
+        }]
+      }
+    ];
   }
 
   /**
@@ -61,7 +74,7 @@ class CabInvoiceGen {
       return agrTotalFare;
     }
   }
-  
+
   /**
    * @method to generate invoice having details total number of rides, total fare, and avg fare per ride
    * @param  {} rides is an array of objects example - ride = [{distance:3,time:3}]; 
@@ -86,6 +99,31 @@ class CabInvoiceGen {
       return invoice;
     }
   }
+
+  /**
+   * @method to generate invoice for specific user
+   * @param  {} userId
+   */
+  getUserInvoice(userId) {
+    if (userId == null) {
+      return true;
+    } else if (typeof (userId) !== "number") {
+      return true;
+    } else {
+      for (let i = 0; i < this.db.length; i++) {
+        if (userId == this.db[i].userId) {
+          let invoice = this.generateInvoice(this.db[i].rides);
+          return invoice;
+        } else {
+          return false;
+        }
+      }
+    }
+  }
+
 }
+
+const c = new CabInvoiceGen();
+console.log(c.getUserInvoice(1));
 
 module.exports = CabInvoiceGen;
