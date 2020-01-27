@@ -38,6 +38,9 @@ class CabInvoiceGen {
     if (distance == null || time == null) {
       //check if function has no arguments
       return true;
+    }else if(distance < 0 || time < 0){
+      //check if function has -ve args
+      return true;
     } else if (typeof distance === undefined || typeof time === undefined) {
       //check if function has partial arguments
       return true;
@@ -70,7 +73,9 @@ class CabInvoiceGen {
     } else if (typeof distance === undefined || typeof time === undefined) {
       //check if function has partial arguments
       return true;
-    } else if (typeof distance !== "number" || typeof distance !== "number") {
+    }else if(distance < 0 || time < 0){
+      return true;
+    }else if (typeof distance !== "number" || typeof distance !== "number") {
       //check if function has valid number type arguments
       return true;
     } else {
