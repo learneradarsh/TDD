@@ -4,9 +4,9 @@
  */
 function isValidEmail(email) {
   const pattern = {
-    emailReg: /^([a-zA-Z0-9_\-\.+]+)@([a-zA-Z0-9_\-\.+]+)\.([a-zA-Z]{2,5})$/,
+    emailReg: /^([^.][a-zA-Z0-9_\-\.+]+)@([\w][a-zA-Z0-9_\-\.+]+)\.([a-zA-Z]{2,5})$/,
     errorAtRateReg: /(?=.*[@])/,
-    tldDotReg: /@[a-zA-Z0-9%*()&!<>{}]([a-zA-Z0-9%*()&!<>{}]+)((\.([a-zA-Z]){0,9})+)$/,
+    tldDotReg: /@([\w%*][a-zA-Z0-9_%*\-\.+]+)\.([a-zA-Z]{0,5})$/,
     tldTwoCharReg: /@[a-zA-Z0-9%*()&!<>{}]([a-zA-Z0-9%*()&!<>{}]+)((\.([a-zA-Z]){2,9})+)$/,
     canNotDotReg: /^[^.]/,
     canNotSpecialReg: /^([\w-]|(?<!\.)\.)+[a-zA-Z0-9]@[a-zA-Z0-9%*()&!<>{}]([%*()&!<>{}]+)((\.([a-zA-Z]){2,9})+)$/,
@@ -41,8 +41,6 @@ function isValidEmail(email) {
     return errorMsgs.onlyCharDig;
   } else if (!pattern.dblDotsReg.test(email)) {
     return errorMsgs.dblDots;
-  } else {
-    return errorMsgs.generic;
   }
 }
 

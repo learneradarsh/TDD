@@ -67,9 +67,6 @@ describe("test case to check +ve cases",function(){
     isEmailValid("abc.100@abc.com.au");
   });
   it("should return true if email is valid",function(){
-    isEmailValid("abc@1.com");
-  });
-  it("should return true if email is valid",function(){
     isEmailValid("abc@gmail.com.com");
   });
   it("should return true if email is valid",function(){
