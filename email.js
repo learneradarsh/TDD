@@ -6,13 +6,14 @@ function isValidEmail(email) {
   const pattern = {
     emailReg: /^([^.][a-zA-Z0-9_\-\.+]+)[^.]@([\w][a-zA-Z0-9_\-\.+]+)\.([a-zA-Z]{2,5})$/,
     errorAtRateReg: /(?=.*[@])/,
-    tldDotReg: /@([\w%*][a-zA-Z0-9_%*\-\.+]+)\.([a-zA-Z]{0,5})$/,
-    tldTwoCharReg: /@[a-zA-Z0-9%*()&!<>{}]([a-zA-Z0-9%*()&!<>{}]+)((\.([a-zA-Z]){2,5})+)$/,
+    tldDotReg: /@([\w%*][a-zA-Z0-9_%*\-\.+]+)\.([a-zA-Z0-9]{0,5})$/,
+    tldTwoCharReg: /@[a-zA-Z0-9%*()&!<>{}]([a-zA-Z0-9%*()&!<>{}]+)((\.([a-zA-Z0-9]){2,5})+)$/,
     canNotDotReg: /^[^.]/,
-    canNotSpecialReg: /^([^.][a-zA-Z0-9@_\-\.+]+)@([a-zA-Z0-9_%*\-\.+]+)\.([a-zA-Z]{2,5})$/,
-    onlyCharDigReg: /^([^.][a-zA-Z0-9@_\-\.+]+)@([a-zA-Z0-9_\-\.+]+)\.([a-zA-Z]{2,5})$/,
-    lastCharDotReg: /^([^.][a-zA-Z0-9@_\-\.+]+)[^.]@([\w][a-zA-Z0-9_\-\.+]+)\.([a-zA-Z]{2,5})$/,
-    doubleAtRateReg: /^([^.][a-zA-Z0-9_\-\.+]+)[^.]@([\w][a-zA-Z0-9_\-\.+]+)\.([a-zA-Z]{2,5})$/
+    canNotSpecialReg: /^([^.][a-zA-Z0-9@_\-\.+]+)@([a-zA-Z0-9_%*\-\.+]+)\.([a-zA-Z0-9]{2,5})$/,
+    onlyCharDigReg: /^([^.][a-zA-Z0-9@_\-\.+]+)@([a-zA-Z0-9_\-\.+]+)\.([a-zA-Z0-9]{2,5})$/,
+    lastCharDotReg: /^([^.][a-zA-Z0-9@_\-\.+]+)[^.]@([\w][a-zA-Z0-9_\-\.+]+)\.([a-zA-Z0-9]{2,5})$/,
+    doubleAtRateReg: /^([^.][a-zA-Z0-9_\-\.+]+)[^.]@([\w][a-zA-Z0-9_\-\.+]+)\.([a-zA-Z0-9]{2,5})$/,
+    tldTwoCharSecReg: /^([^.][a-zA-Z0-9_\-\.+]+)[^.]@([\w][a-zA-Z0-9_\-\.+]+)\.([a-zA-Z]{2,5})$/
   };
   const errorMsgs = {
     errorAtRate: "must contains “@” symbol",
@@ -24,6 +25,7 @@ function isValidEmail(email) {
     onlyCharDig: "email’s tld is only allow character and digit",
     lastCharDot: "email’s last character can not end with dot “.”",
     doubleAtRate: "double @ is not allow",
+    tldTwoCharSec: "-email’s tld which has two characters can not contains digit",
     generic: "Not valid email format"
   };
 
@@ -45,8 +47,11 @@ function isValidEmail(email) {
     return errorMsgs.lastCharDot;
   }else if(!pattern.doubleAtRateReg.test(email)){
     return errorMsgs.doubleAtRate;
+  }else if(!pattern.tldTwoCharSecReg.test(email)){
+    return errorMsgs.tldTwoCharSec;
+  }else{
+    return errorMsgs.generic;
   }
 }
 
-// console.log(isValidEmail("abc@.com.my"));
 module.exports = isValidEmail;
