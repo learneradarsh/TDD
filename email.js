@@ -4,7 +4,7 @@
  */
 function isValidEmail(email) {
   const pattern = {
-    emailReg: /^(^[^.][\w-]|(?<!\.)\.)+[a-zA-Z0-9]@[a-zA-Z0-9]([\w\-]+)((\.([a-zA-Z]){2,9})+)$/,
+    emailReg: /^([a-zA-Z0-9_\-\.+]+)@([a-zA-Z0-9_\-\.+]+)\.([a-zA-Z]{2,5})$/,
     errorAtRateReg: /(?=.*[@])/,
     tldDotReg: /@[a-zA-Z0-9%*()&!<>{}]([a-zA-Z0-9%*()&!<>{}]+)((\.([a-zA-Z]){0,9})+)$/,
     tldTwoCharReg: /@[a-zA-Z0-9%*()&!<>{}]([a-zA-Z0-9%*()&!<>{}]+)((\.([a-zA-Z]){2,9})+)$/,
@@ -21,7 +21,8 @@ function isValidEmail(email) {
     canNotSpecial:
       "email’s is only allow character, digit, underscore and dash",
     onlyCharDig: "email’s tld is only allow character and digit",
-    dblDots: "double dots “.” are not allow"
+    dblDots: "double dots “.” are not allow",
+    generic: "Not valid email format"
   };
 
   if (pattern.emailReg.test(email)) {
@@ -40,6 +41,8 @@ function isValidEmail(email) {
     return errorMsgs.onlyCharDig;
   } else if (!pattern.dblDotsReg.test(email)) {
     return errorMsgs.dblDots;
+  } else {
+    return errorMsgs.generic;
   }
 }
 
