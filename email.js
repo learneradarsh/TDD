@@ -4,14 +4,15 @@
  */
 function isValidEmail(email) {
   const pattern = {
-    emailReg: /^([^.][a-zA-Z0-9_\-\.+]+)@([\w][a-zA-Z0-9_\-\.+]+)\.([a-zA-Z]{2,5})$/,
+    emailReg: /^([^.][a-zA-Z0-9_\-\.+]+)[^.]@([\w][a-zA-Z0-9_\-\.+]+)\.([a-zA-Z]{2,5})$/,
     errorAtRateReg: /(?=.*[@])/,
     tldDotReg: /@([\w%*][a-zA-Z0-9_%*\-\.+]+)\.([a-zA-Z]{0,5})$/,
-    tldTwoCharReg: /@[a-zA-Z0-9%*()&!<>{}]([a-zA-Z0-9%*()&!<>{}]+)((\.([a-zA-Z]){2,9})+)$/,
+    tldTwoCharReg: /@[a-zA-Z0-9%*()&!<>{}]([a-zA-Z0-9%*()&!<>{}]+)((\.([a-zA-Z]){2,5})+)$/,
     canNotDotReg: /^[^.]/,
-    canNotSpecialReg: /^([\w-]|(?<!\.)\.)+[a-zA-Z0-9]@[a-zA-Z0-9%*()&!<>{}]([%*()&!<>{}]+)((\.([a-zA-Z]){2,9})+)$/,
-    onlyCharDigReg: /([\w-]|(?<!\.)\.)+[a-zA-Z0-9]@[a-zA-Z0-9]([\w\-]+)((\.([a-zA-Z]){2,9})+)$/,
-    dblDotsReg: /([\w-]|(?<!\.)\.)+[a-zA-Z0-9]@[a-zA-Z0-9]([\w\-]+)((\.([a-zA-Z]){2,9})+)$/
+    canNotSpecialReg: /^([^.][a-zA-Z0-9@_\-\.+]+)@([a-zA-Z0-9_%*\-\.+]+)\.([a-zA-Z]{2,5})$/,
+    onlyCharDigReg: /^([^.][a-zA-Z0-9@_\-\.+]+)@([a-zA-Z0-9_\-\.+]+)\.([a-zA-Z]{2,5})$/,
+    lastCharDotReg: /^([^.][a-zA-Z0-9@_\-\.+]+)[^.]@([\w][a-zA-Z0-9_\-\.+]+)\.([a-zA-Z]{2,5})$/,
+    doubleAtRateReg: /^([^.][a-zA-Z0-9_\-\.+]+)[^.]@([\w][a-zA-Z0-9_\-\.+]+)\.([a-zA-Z]{2,5})$/
   };
   const errorMsgs = {
     errorAtRate: "must contains “@” symbol",
@@ -21,7 +22,8 @@ function isValidEmail(email) {
     canNotSpecial:
       "email’s is only allow character, digit, underscore and dash",
     onlyCharDig: "email’s tld is only allow character and digit",
-    dblDots: "double dots “.” are not allow",
+    lastCharDot: "email’s last character can not end with dot “.”",
+    doubleAtRate: "double @ is not allow",
     generic: "Not valid email format"
   };
 
@@ -39,8 +41,10 @@ function isValidEmail(email) {
     return errorMsgs.canNotSpecial;
   } else if (!pattern.onlyCharDigReg.test(email)) {
     return errorMsgs.onlyCharDig;
-  } else if (!pattern.dblDotsReg.test(email)) {
-    return errorMsgs.dblDots;
+  } else if (!pattern.lastCharDotReg.test(email)) {
+    return errorMsgs.lastCharDot;
+  }else if(!pattern.doubleAtRateReg.test(email)){
+    return errorMsgs.doubleAtRate;
   }
 }
 
