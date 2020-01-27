@@ -41,9 +41,17 @@ describe("test case to check email -ve cases", function() {
       isContains = isValidEmail("abc@%*.com");
       assert.equal(isContains,"email’s tld is only allow character and digit");
   });
-  it("should return error if email contains double dot",function(){
-    isContains = isValidEmail("abc..2002@gmail.com");
-    assert.equal(isContains,"double dots “.” are not allow");
+  // it("should return error if email contains double dot",function(){
+  //   isContains = isValidEmail("abc..2002@gmail.com");
+  //   assert.equal(isContains,"double dots “.” are not allow");
+  // });
+  it("should return error if email last character end with dot",function(){
+      isContains = isValidEmail("abc.@gmail.com");
+      assert.equal(isContains,"email’s last character can not end with dot “.”");
+  });
+  it("should return true if email contains double @",function(){
+    isContains = isValidEmail("abc@abc@gmail.com");
+    assert.equal(isContains,"double @ is not allow");
   });
 });
 
