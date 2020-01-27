@@ -53,6 +53,10 @@ describe("test case to check email -ve cases", function() {
     isContains = isValidEmail("abc@abc@gmail.com");
     assert.equal(isContains,"double @ is not allow");
   });
+  it("should return true if email tld contains digit in two chars",function(){
+    isContains = isValidEmail("abc@gmail.com.1a");
+    assert.equal(isContains,"-email’s tld which has two characters can not contains digit");
+  });
 });
 
 describe("test case to check +ve cases",function(){
