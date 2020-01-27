@@ -2,7 +2,12 @@ const assert = require("chai").assert;
 const isValidEmail = require("./email");
 let isContains;
 
-describe("test case to check email", function() {
+function isEmailValid(email) {
+  let isValid = isValidEmail(email);
+  assert.equal(isValid, true);
+}
+
+describe("test case to check email -ve cases", function() {
   it("should return error if email doesn't contains @", function() {
     isContains = isValidEmail("abc");
     assert.equal(isContains, "must contains “@” symbol");
@@ -39,5 +44,35 @@ describe("test case to check email", function() {
   it("should return error if email contains double dot",function(){
     isContains = isValidEmail("abc..2002@gmail.com");
     assert.equal(isContains,"double dots “.” are not allow");
+  });
+});
+
+describe("test case to check +ve cases",function(){
+  it("should return true if email is valid",function(){
+    isEmailValid("abc@yahoo.com");
+  });
+  it("should return true if email is valid",function(){
+    isEmailValid("abc-100@yahoo.com");
+  });
+  it("should return true if email is valid",function(){
+    isEmailValid("abc.100@yahoo.com");
+  });
+  it("should return true if email is valid",function(){
+    isEmailValid("abc111@abc.com");
+  });
+  it("should return true if email is valid",function(){
+    isEmailValid("abc-100@abc.net");
+  });
+  it("should return true if email is valid",function(){
+    isEmailValid("abc.100@abc.com.au");
+  });
+  it("should return true if email is valid",function(){
+    isEmailValid("abc@1.com");
+  });
+  it("should return true if email is valid",function(){
+    isEmailValid("abc@gmail.com.com");
+  });
+  it("should return true if email is valid",function(){
+    isEmailValid("abc+100@gmail.com");
   });
 });
