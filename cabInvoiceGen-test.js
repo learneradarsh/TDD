@@ -24,6 +24,10 @@ describe("test cases for calcCabFare agrument values validations", function () {
     let isValid = cabInvoiceGen.calcCabFare(2, 4);
     assert.notEqual(isValid, true);
   });
+  it("should retur true if distance or time is -ve",function(){
+    let isValid = cabInvoiceGen.calcCabFare(-1,-1);
+    assert.equal(isValid,true);
+  });
 });
 
 describe("test cases for output of calcCabFare", function () {
@@ -167,5 +171,9 @@ describe("test cases for calcPremiumCabFare",function(){
   it("should return 675 if distance - 5 and time - 5",function(){
     let premiumFare = cabInvoiceGen.calcPremiumCabFare(5,5);
     assert.equal(premiumFare,675);
+  });
+  it("should retur true if distance or time is -ve",function(){
+    let isValid = cabInvoiceGen.calcPremiumCabFare(-1,-1);
+    assert.equal(isValid,true);
   });
 });
