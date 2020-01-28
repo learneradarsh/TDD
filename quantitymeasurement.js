@@ -19,7 +19,7 @@ function measurement() {
 
     //number type check
     if (typeof number != "number") {
-      return false;
+      return true;
     }
 
     //convert feet into inch
@@ -47,7 +47,7 @@ function measurement() {
 
     //number type check
     if (typeof number != "number") {
-      return false;
+      return true;
     }
 
     convertedValue = number * (1/3);
@@ -74,7 +74,7 @@ function measurement() {
 
     //number type check
     if (typeof number != "number") {
-      return false;
+      return true;
     }
 
     convertedValue = number * (1/36);
@@ -100,7 +100,7 @@ function measurement() {
 
     //number type check
     if (typeof number != "number") {
-      return false;
+      return true;
     }
 
     convertedValue = number * 36;
@@ -125,7 +125,7 @@ function measurement() {
 
     //number type check
     if (typeof number != "number") {
-      return false;
+      return true;
     }
 
     convertedValue = number * 3;

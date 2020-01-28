@@ -12,7 +12,7 @@ describe("Test case for feet", function() {
   });
   it("should return false if typeof number is not number", function() {
     let isNum = measurement.convertFeetIntoInch("4");
-    assert.equal(isNum, false);
+    assert.equal(isNum, true);
   });
 });
 
