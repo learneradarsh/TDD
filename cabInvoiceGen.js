@@ -29,8 +29,8 @@ class CabInvoiceGen {
 
   /**
    * @method to calculate fare for the journey by using distance and time
-   * @param  {} distance in kilometers
-   * @param  {} time in hours
+   * @param  {number} distance in kilometers
+   * @param  {number} time in hours
    */
   calcCabFare(distance, time) {
     let totalFare = 0; //total fare for a ride in INR
@@ -61,8 +61,8 @@ class CabInvoiceGen {
   
   /**
    * @method to calculate fare for premium cab journey
-   * @param  {} distance
-   * @param  {} time
+   * @param  {number} distance
+   * @param  {number} time
    */
   calcPremiumCabFare(distance,time){
     let totalFare = 0; //total fare for a ride in INR
@@ -92,7 +92,7 @@ class CabInvoiceGen {
 
   /**
    * @method to calculate multiple ride fares
-   * @param  {} rides is an array of objects example - ride = [{distance:3,time:3}];
+   * @param  {number} rides is an array of objects example - ride = [{distance:3,time:3}];
    */
   multipleRideFare(rides) {
     if (rides == null) {
@@ -121,7 +121,7 @@ class CabInvoiceGen {
 
   /**
    * @method to generate invoice having details total number of rides, total fare, and avg fare per ride
-   * @param  {} rides is an array of objects example - ride = [{distance:3,time:3}]; 
+   * @param  {object} rides is an array of objects example - ride = [{distance:3,time:3}]; 
    */
   generateInvoice(rides) {
     if (rides == null) {
@@ -146,7 +146,7 @@ class CabInvoiceGen {
 
   /**
    * @method to generate invoice for specific user
-   * @param  {} userId
+   * @param  {number} userId
    */
   getUserInvoice(userId) {
     if (userId == null) {

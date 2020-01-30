@@ -2,7 +2,7 @@ function measurement() {
 
   /**
    * @function to convert feet into inch
-   * @param  {} number
+   * @param  {number} number
    */
   function convertFeetIntoInch(number) {
     let convertedValue = 0;
@@ -30,7 +30,7 @@ function measurement() {
   
   /**
    * @function to convert feet into yard
-   * @param  {} number
+   * @param  {number} number
    */
   function convertFeetIntoYard(number) {
     let convertedValue = 0;
@@ -57,7 +57,7 @@ function measurement() {
   
   /**
    * @function to convert inch into yard
-   * @param  {} number
+   * @param  {number} number
    */
   function convertInchIntoYard(number) {
     let convertedValue = 0;
@@ -83,7 +83,7 @@ function measurement() {
   
   /**
    * @function to convert yard into inch 
-   * @param  {} number
+   * @param  {number} number
    */
   function convertYardIntoInch(number) {
     let convertedValue = 0;
@@ -108,7 +108,7 @@ function measurement() {
   }
   
   /**@function to convert yard into feet
-   * @param  {} number
+   * @param  {number} number
    */
   function convertYardIntoFeet(number) {
     let convertedValue = 0;

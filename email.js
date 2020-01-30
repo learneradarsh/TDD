@@ -1,6 +1,6 @@
 /**
  * to validate email
- * @param  {} email
+ * @param  {string} email
  */
 function isValidEmail(email) {
   const pattern = {

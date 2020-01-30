@@ -1,7 +1,7 @@
 /**
  * to find sum of a and b
- * @param  {} a
- * @param  {} b
+ * @param  {number} a
+ * @param  {number} b
  */
 function sum(a, b) {
   //Case 1: Check the function for no arguments
